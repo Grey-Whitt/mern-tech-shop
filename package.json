@@ -1,0 +1,35 @@
+{
+  "name": "mern-tech-shop",
+  "version": "1.0.0",
+  "description": "mern ecommerce webapp",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server/server",
+    "server": "nodemon server/server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node server/seeder",
+    "data:destroy": "node server/seeder -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grey-Whitt/mern-tech-shop.git"
+  },
+  "author": "Grey Whittenberger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grey-Whitt/mern-tech-shop/issues"
+  },
+  "homepage": "https://github.com/Grey-Whitt/mern-tech-shop#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^6.2.8"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
+}
