@@ -1,0 +1,23 @@
+{
+  "name": "mern-tech-shop",
+  "version": "1.0.0",
+  "description": "mern ecommerce webapp",
+  "main": "server.js",
+  "scripts": {
+    "start": "cd server && nodemon"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grey-Whitt/mern-tech-shop.git"
+  },
+  "author": "Grey Whittenberger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grey-Whitt/mern-tech-shop/issues"
+  },
+  "homepage": "https://github.com/Grey-Whitt/mern-tech-shop#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
