@@ -8,7 +8,9 @@
     "start": "node server/server",
     "server": "nodemon server/server",
     "client": "npm start --prefix client",
-    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\""
+    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "data:import": "node server/seeder",
+    "data:destroy": "node server/seeder -d"
   },
   "repository": {
     "type": "git",
