@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server/server",
-    "server": "nodemon backend/server",
+    "server": "nodemon server/server",
     "client": "npm start --prefix client",
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\""
   },
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Grey-Whitt/mern-tech-shop#readme",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "express": "^4.17.3"
   },
   "devDependencies": {
