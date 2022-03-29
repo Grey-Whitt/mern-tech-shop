@@ -14,9 +14,7 @@ import {
   USER_UPDATE_PROFILE_SUCCESS,
 } from '../constants/userConstants'
 
-const initialState = { user: {} }
-
-export const userLoginReducer = (state = initialState, action) => {
+export const userLoginReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_LOGIN_REQUEST:
       return { loading: true }
@@ -31,7 +29,7 @@ export const userLoginReducer = (state = initialState, action) => {
   }
 }
 
-export const userRegisterReducer = (state = initialState, action) => {
+export const userRegisterReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_REGISTER_REQUEST:
       return { loading: true }
@@ -44,7 +42,7 @@ export const userRegisterReducer = (state = initialState, action) => {
   }
 }
 
-export const userDetailsReducer = (state = initialState, action) => {
+export const userDetailsReducer = (state = { user: {} }, action) => {
   switch (action.type) {
     case USER_DETAILS_REQUEST:
       return { ...state, loading: true }
