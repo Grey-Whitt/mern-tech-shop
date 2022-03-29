@@ -17,7 +17,7 @@ const PaymentScreen = () => {
     navigate('/shipping')
   }
 
-  const [paymentMethod, setPaymentMethod] = useState('paypal')
+  const [paymentMethod, setPaymentMethod] = useState('PayPal')
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -40,8 +40,8 @@ const PaymentScreen = () => {
               id='PayPal'
               name='paymentMethod'
               value='PayPal'
-              checked
-              onChange={(e) => setPaymentMethod(e.target.value)}
+              defaultChecked
+              onClick={(e) => setPaymentMethod(e.target.value)}
             ></Form.Check>
 
             <Form.Check
@@ -49,9 +49,8 @@ const PaymentScreen = () => {
               label='Payment Method 2'
               id='payment2'
               name='paymentMethod'
-              value='payment2'
-              checked
-              onChange={(e) => setPaymentMethod(e.target.value)}
+              value='Payment Method 2'
+              onClick={(e) => setPaymentMethod(e.target.value)}
             ></Form.Check>
           </Col>
         </Form.Group>
