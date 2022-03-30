@@ -7,7 +7,7 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { login } from '../actions/userActions'
 
-const LoginScreen = () => {
+const LoginScreen = (location) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
@@ -17,11 +17,11 @@ const LoginScreen = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { loading, error, userInfo } = userLogin
 
-  const redirect = searchParams.get('redirect') || '/'
+  const redirect = searchParams.get('redirect')
 
   useEffect(() => {
     if (userInfo) {
-      navigate(redirect)
+      navigate(redirect ? `/${redirect}` : '/')
     }
   }, [navigate, userInfo, redirect])
 
