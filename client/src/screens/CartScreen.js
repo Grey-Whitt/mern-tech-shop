@@ -7,6 +7,7 @@ import { addToCart, removeFromCart } from '../actions/cartActions'
 
 const Cart = () => {
   const { id } = useParams()
+
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
 
@@ -53,7 +54,7 @@ const Cart = () => {
                     ></Image>
                   </Col>
                   <Col md='3'>
-                    <Link to={`/product/${item.product}`}>{item.name}</Link>
+                    <Link to={`/products/${item.product}`}>{item.name}</Link>
                   </Col>
                   <Col md={2}>${item.price}</Col>
                   <Col md={2}>

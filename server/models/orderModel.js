@@ -16,7 +16,7 @@ const orderSchema = mongoose.Schema(
         product: {
           type: mongoose.Schema.Types.ObjectId,
           required: true,
-          ref: 'product',
+          ref: 'Product',
         },
       },
     ],
@@ -59,7 +59,7 @@ const orderSchema = mongoose.Schema(
     paidAt: {
       type: Date,
     },
-    delivered: {
+    isDelivered: {
       type: Boolean,
       required: true,
       default: false,
@@ -69,7 +69,7 @@ const orderSchema = mongoose.Schema(
     },
   },
   {
-    Timestamps: true,
+    timestamps: true,
   }
 )
 
