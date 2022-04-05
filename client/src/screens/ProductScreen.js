@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
+import {
+  Row,
+  Col,
+  Image,
+  ListGroup,
+  Card,
+  Button,
+  Form,
+  Modal,
+} from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
@@ -34,9 +43,13 @@ const ProductScreen = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+
   useEffect(() => {
+    dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
     if (successProductReview) {
-      alert('Review Submitted!')
+      setShow(true)
       setRating(0)
       setComment('')
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
@@ -205,6 +218,18 @@ const ProductScreen = () => {
           </Row>
         </>
       )}
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Review submitted</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Thanks for leaving a review!</Modal.Body>
+        <Modal.Footer>
+          <Button variant='primary' onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 }

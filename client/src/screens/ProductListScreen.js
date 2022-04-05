@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Table, Button, Row, Col } from 'react-bootstrap'
+import { Table, Button, Row, Col, Modal } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -61,10 +61,15 @@ const ProductListScreen = () => {
     pageNumber,
   ])
 
+  const [show, setShow] = useState(false)
+  const [productId, setProductId] = useState('')
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
   const deleteHandler = (id) => {
-    if (window.confirm('Are you sure?')) {
-      dispatch(deleteProduct(id))
-    }
+    dispatch(deleteProduct(productId))
+    setProductId('')
+    handleClose()
   }
 
   const createProductHandler = () => {
@@ -121,7 +126,10 @@ const ProductListScreen = () => {
                     <Button
                       variant='danger'
                       className='btn-sm'
-                      onClick={() => deleteHandler(product._id)}
+                      onClick={() => {
+                        handleShow()
+                        setProductId(product._id)
+                      }}
                     >
                       <i className='fas fa-trash'></i>
                     </Button>
@@ -133,6 +141,23 @@ const ProductListScreen = () => {
           <Paginate pages={pages} page={page} isAdmin={true} />
         </>
       )}
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Product</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Are you sure want to delete product {productId}?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant='secondary' onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant='danger' onClick={() => deleteHandler()}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 }
