@@ -58,7 +58,7 @@ const App = () => {
           </Routes>
         </Container>
       </main>
-      <Footer></Footer>
+      <Footer />
     </Router>
   )
 }

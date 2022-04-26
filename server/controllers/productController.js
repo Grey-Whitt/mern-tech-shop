@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import Product from '../models/productModel.js'
+import Order from '../models/orderModel.js'
 
 // @desc  Fetch all products
 // @route GET /api/products
@@ -106,7 +107,28 @@ const createProductReview = asyncHandler(async (req, res) => {
 
   const product = await Product.findById(req.params.id)
 
+  // Get all items the user has ordered
+  const orderItems = await Order.aggregate([
+    { $match: { user: req.user._id } },
+    { $unwind: { path: '$orderItems' } },
+    {
+      $group: {
+        _id: { user: '$user' },
+        orderItems: { $addToSet: '$orderItems.product' },
+      },
+    },
+  ])
+
   if (product) {
+    const hasBought = orderItems[0].orderItems
+      .toString()
+      .includes(product._id.toString())
+
+    if (!hasBought) {
+      res.status(400)
+      throw new Error('You can only review products you have ordered')
+    }
+
     const alreadyReviewed = product.reviews.find(
       (r) => r.user.toString() === req.user._id.toString()
     )
