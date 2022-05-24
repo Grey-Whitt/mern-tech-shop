@@ -132,6 +132,7 @@ bruce@example.com (User)
 ---
 
 MongoDB  
+Mongoose  
 Express.js  
 React  
 Node.js  
