@@ -140,6 +140,7 @@ JSON Web Tokens
 BCrypt  
 React Router v6  
 React Bootstrap v5  
+PayPal  
 Deployed with Heroku
 
 ## Questions
